@@ -23,8 +23,8 @@ Blanket.prototype.paint = function () {
 
 Blanket.prototype.paintLeft = function () {
   var p1 = [0, 0];
-  var p2 = [rando(this._canvas.width * 0.1, this._canvas.width * 0.6), 0];
-  var p3 = [rando(this._canvas.width * 0.1, this._canvas.width * 0.6), this._canvas.height];
+  var p2 = [rando(this._canvas.width * 0.1, this._canvas.width * 0.3), 0];
+  var p3 = [rando(this._canvas.width * 0.1, this._canvas.width * 0.3), this._canvas.height];
 
   if (this.mood !== SAD) {
     var p4 = [0, this._canvas.height];
@@ -36,8 +36,8 @@ Blanket.prototype.paintLeft = function () {
 
 Blanket.prototype.paintRight = function () {
   var p1 = [this._canvas.width, 0];
-  var p2 = [rando(this._canvas.width * 0.6, this._canvas.width * 0.9), 0];
-  var p3 = [rando(this._canvas.width * 0.6, this._canvas.width * 0.9), this._canvas.height];
+  var p2 = [rando(this._canvas.width * 0.7, this._canvas.width * 0.9), 0];
+  var p3 = [rando(this._canvas.width * 0.7, this._canvas.width * 0.9), this._canvas.height];
 
   if (this.mood !== SAD) {
     var p4 = [this._canvas.width, this._canvas.height];
@@ -48,12 +48,12 @@ Blanket.prototype.paintRight = function () {
 };
 
 Blanket.prototype.paintMiddle = function () {
-  var p1 = [rando(this._canvas.width * 0.2, this._canvas.width * 0.4), 0];
-  var p2 = [rando(this._canvas.width * 0.5, this._canvas.width * 0.8), 0];
-  var p3 = [rando(this._canvas.width * 0.5, this._canvas.width * 0.8), this._canvas.height];
+  var p1 = [rando(this._canvas.width * 0.2, this._canvas.width * 0.3), 0];
+  var p2 = [rando(this._canvas.width * 0.5, this._canvas.width * 0.6), 0];
+  var p3 = [rando(this._canvas.width * 0.5, this._canvas.width * 0.6), this._canvas.height];
 
   if (this.mood !== SAD) {
-    var p4 = [rando(this._canvas.width * 0.2, this._canvas.width * 0.4), this._canvas.height];
+    var p4 = [rando(this._canvas.width * 0.2, this._canvas.width * 0.3), this._canvas.height];
     return this.paintBlanket(p1, p2, p3, p4);
   }
 

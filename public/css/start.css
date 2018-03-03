@@ -1,22 +1,3 @@
-.start-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.start {
-  width: 100%;
-  max-width: 38rem;
-  background-color: white;
-  border-radius: 3px;
-  border: 3px dashed slategray;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
 .start-canvas {
   position: absolute;
   top: 0;
@@ -26,32 +7,38 @@
   background-color: transparent;
 }
 
+.start-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1 {
-  margin: 0;
-  padding: 0;
-  color: slategrey;
-}
-
-h1, p {
-  margin-bottom: 2rem;
-}
-
-li {
-  margin-bottom: 1rem;
-}
-
-button {
-  font-size: 1rem;
-  padding: 1rem;
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font-size: 6rem;
   color: white;
-  background-color: slategrey;
-  border-width: 1rem;
-  border-top-color: slategrey;
-  border-right-color: slategrey;
-  border-left-color: darkslategrey;
-  border-bottom-color: darkslategrey;
-  cursor: pointer;
+  text-shadow: 2px 2px rgba(0,0,0,0.4);
+}
 
-  display: block;
-  margin: 1rem auto 0 auto;
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button, .button {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  border: 0;
+  border-radius: 1000px;
+  cursor: pointer;
 }

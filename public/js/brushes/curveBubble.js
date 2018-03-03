@@ -22,7 +22,7 @@ CurveBubble.prototype.paint = function () {
   this.colour = getMoodColour(this.mood);
 
   var index = 0;
-  var curvePoints = getCurvePoints(this.points, 0.5, 10);
+  var curvePoints = getCurvePoints(this.points, 0.8, 10);
 
   var interval = setInterval(function() {
     if (curvePoints.length === 0) {
