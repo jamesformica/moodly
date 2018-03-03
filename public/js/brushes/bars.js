@@ -54,7 +54,7 @@ Bars.prototype.paintBottom = function () {
 
 Bars.prototype.paintTop = function () {
   var thickness = rando(5, 15);
-  var height = rando(this._canvas.height * 0.6, this._canvas.height * 0.8);
+  var height = rando(this._canvas.height * 0.2, this._canvas.height * 0.8);
   var x = rando(0, this._canvas.width);
   var y = 0;
 

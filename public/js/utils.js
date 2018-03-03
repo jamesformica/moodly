@@ -21,7 +21,8 @@ function rando(min, max) {
 function getRandomBrush() {
   var brushes = [
     Bars,
-    Blanket
+    Blanket,
+    CurveBubble
   ];
 
   return brushes[rando(0, brushes.length - 1)];
