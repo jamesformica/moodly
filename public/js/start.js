@@ -1,9 +1,12 @@
 function StartCanvas(id) {
   this.initCanvas(id);
-  //window.startMoodOnlyGreys = true;
+  window.startMoodOnlyGreys = true;
 
-  //this.testOne(CurveBubble);
-  this.testAll();
+  this.testOne(CurveBubble);
+  this.testOne(CurveLine);
+  this.testOne(Bars);
+  this.testOne(Blanket);
+  //this.testAll();
 }
 
 
@@ -12,30 +15,36 @@ StartCanvas.prototype.initCanvas = function (id) {
   this._canvas.setAttribute('width', this._canvas.clientWidth);
   this._canvas.setAttribute('height', this._canvas.clientHeight);
   this.context = this._canvas.getContext('2d');
+  this.context.save();
+
+  this.conductor = new Conductor(this._canvas);
 };
 
 StartCanvas.prototype.testAll = function () {
   var lastClear = new Date();
-  var interval = setInterval(function () {
+  setInterval(function () {
     if (new Date() - lastClear > 30000) {
-      clearInterval(interval);
+      lastClear = new Date();
+      this.context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
 
     var mood = getMood(Math.random());
-    this.context.save();
     var brush = getRandomBrush();
     var time = rando(100, 800);
     new brush(this._canvas, this.context, mood, time);
-    this.context.restore();
   }.bind(this), 3000);
 };
 
 StartCanvas.prototype.testOne = function (brush) {
   var mood = getMood(Math.random());
-  this.context.save();
   var time = rando(100, 800);
-  new brush(this._canvas, this.context, mood, time);
-  this.context.restore();
+
+  var result = {
+    mood: mood,
+    time: time
+  };
+
+  this.conductor.orchastrate(brush, result);
 };
 
 new StartCanvas('start-canvas');

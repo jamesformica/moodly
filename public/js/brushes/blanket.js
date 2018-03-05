@@ -1,24 +1,25 @@
-function Blanket(canvas, context, mood, time) {
-  this._canvas = canvas;
-  this.context = context;
-  this.mood = mood;
-
-  this.paint();
+function Blanket(_canvas, result) {
+  this._canvas = _canvas;
+  this.context = _canvas.getContext("2d");
+  this.mood = result.mood;
 }
 
 Blanket.prototype.paint = function () {
-  var type = rando(0, 2);
-  switch (type) {
-    case 0:
-      this.paintLeft();
-      break;
-    case 1:
-      this.paintRight();
-      break;
-    case 2:
-      this.paintMiddle();
-      break;
-  }
+  return new Promise(function (resolve) {
+    var type = rando(0, 2);
+    switch (type) {
+      case 0:
+        this.paintLeft();
+        break;
+      case 1:
+        this.paintRight();
+        break;
+      case 2:
+        this.paintMiddle();
+        break;
+    }
+    resolve();
+  }.bind(this));
 };
 
 Blanket.prototype.paintLeft = function () {
@@ -61,10 +62,11 @@ Blanket.prototype.paintMiddle = function () {
 }
 
 Blanket.prototype.paintBlanket = function () {
+  this.context.beginPath();
+
   this.context.globalAlpha = rando(2, 4) / 10;
   this.context.fillStyle = getMoodColour(this.mood);
 
-  this.context.beginPath();
   for (var i = 0; i < arguments.length; i++) {
     if (i === 0) {
       this.context.moveTo(arguments[i][0], arguments[i][1]);
@@ -73,4 +75,5 @@ Blanket.prototype.paintBlanket = function () {
     }
   }
   this.context.fill();
+  this.context.restore();
 }

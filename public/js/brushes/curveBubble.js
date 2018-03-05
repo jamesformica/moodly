@@ -1,47 +1,38 @@
-function CurveBubble(canvas, context, mood, time) {
-  this._canvas = canvas;
-  this.context = context;
-  this.mood = mood;
-  this.time = time;
-  this.points = [];
-
-  this.init();
-  this.paint();
-};
-
-CurveBubble.prototype.init = function () {
-  var numPoints = Math.max(this.time / 100, 5);
-  for (var i = 0; i < numPoints; i++) {
-    var x = rando(0, this._canvas.width);
-    var y = rando(0, this._canvas.height);
-    this.points.push(x, y);
-  }
+function CurveBubble(_canvas, result) {
+  this._canvas = _canvas;
+  this.context = _canvas.getContext("2d");
+  this.mood = result.mood;
+  this.time = result.time;
 };
 
 CurveBubble.prototype.paint = function () {
-  this.colour = getMoodColour(this.mood);
+  return new Promise(function (resolve) {
+    this.colour = getMoodColour(this.mood);
+    var keyPoints = CurveHelper.getKeyPoints(this.mood, this._canvas);
+    var curvePoints = CurveHelper.getCurvePoints(keyPoints, this.mood, 10);
 
-  var index = 0;
-  var curvePoints = getCurvePoints(this.points, 0.8, 10);
+    var index = 0;
+    var interval = setInterval(function () {
+      if (index >= curvePoints.length - 1) {
+        clearInterval(interval);
+        resolve();
+        return;
+      }
 
-  var interval = setInterval(function() {
-    if (curvePoints.length === 0) {
-      clearInterval(interval);
-      return;
-    }
+      var x = curvePoints[index];
+      var y = curvePoints[index + 1];
+      index += 2;
 
-    var x = curvePoints[index];
-    var y = curvePoints[index + 1];
-    index += 2;
-
-    this.paintCircle(x, y);
-  }.bind(this), 100);
+      this.paintCircle(x, y);
+    }.bind(this), 100);
+  }.bind(this));
 };
 
 CurveBubble.prototype.paintCircle = function (x, y) {
-  this.context.globalAlpha = rando(2, 7) / 10;
   var radius = rando(this._canvas.height * 0.01, this._canvas.height * 0.03);
+
   this.context.beginPath();
+  this.context.globalAlpha = rando(2, 7) / 10;
   this.context.arc(x, y, radius, 0, 2 * Math.PI, false);
   this.context.fillStyle = this.colour;
   this.context.fill();

@@ -1,11 +1,10 @@
-function Bars(canvas, context, mood, time) {
-  this._canvas = canvas;
-  this.context = context;
-  this.mood = mood;
-  this.time = time;
+function Bars(_canvas, result) {
+  this._canvas = _canvas;
+  this.context = _canvas.getContext("2d");
+  this.mood = result.mood;
+  this.time = result.time;
 
   this.init();
-  this.paint();
 }
 
 Bars.prototype.init = function () {
@@ -23,28 +22,33 @@ Bars.prototype.init = function () {
 };
 
 Bars.prototype.paint = function () {
-  if (this.number === 0) return;
+  return new Promise(function (resolve) {
+    var interval = setInterval(function () {
+      if (this.number === 0) {
+        clearInterval(interval);
+        resolve();
+        return;
+      }
 
-  setTimeout(function () {
-    switch (this.mood) {
-      case HAPPY:
-        this.paintTop();
-        break;
-      case NEUTRAL:
-        this.paintSide();
-        break;
-      case SAD:
-        this.paintBottom();
-        break;
-    }
+      switch (this.mood) {
+        case HAPPY:
+          this.paintTop();
+          break;
+        case NEUTRAL:
+          this.paintSide();
+          break;
+        case SAD:
+          this.paintBottom();
+          break;
+      }
 
-    this.number -= 1;
-    this.paint();
-  }.bind(this), this.time);
+      this.number -= 1;
+    }.bind(this), this.time);
+  }.bind(this));
 }
 
 Bars.prototype.paintBottom = function () {
-  var thickness = rando(70, 85);
+  var thickness = rando(15, 23);
   var height = rando(this._canvas.height * 0.3, this._canvas.height * 0.6);
   var x = rando(0, this._canvas.width);
   var y = this._canvas.height - height;
@@ -62,7 +66,7 @@ Bars.prototype.paintTop = function () {
 }
 
 Bars.prototype.paintSide = function () {
-  var thickness = rando(30, 50);
+  var thickness = rando(10, 25);
   var length = rando(this._canvas.width * 0.1, this._canvas.width * 0.3);
   var y = rando(0, this._canvas.height);
   if (rando(0, 1)) {
@@ -75,7 +79,8 @@ Bars.prototype.paintSide = function () {
 }
 
 Bars.prototype.paintBar = function (x, y, width, height) {
-  this.context.globalAlpha = rando(2, 10) / 10;
+  this.context.beginPath();
+  this.context.globalAlpha = rando(2, 5) / 10;
   this.context.fillStyle = getMoodColour(this.mood);
   this.context.fillRect(x, y, width, height);
 }
