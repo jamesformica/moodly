@@ -1,9 +1,9 @@
 function StartCanvas(id) {
   this.initCanvas(id);
-  window.startMoodOnlyGreys = true;
+  //window.startMoodOnlyGreys = true;
 
-  this.testOne(CurveBubble);
-  //this.testAll();
+  //this.testOne(CurveBubble);
+  this.testAll();
 }
 
 
@@ -20,14 +20,14 @@ StartCanvas.prototype.initCanvas = function (id) {
 StartCanvas.prototype.testAll = function () {
   var lastClear = new Date();
   setInterval(function () {
-    if (new Date() - lastClear > 30000) {
+    if (new Date() - lastClear > 60000) {
       lastClear = new Date();
       this.context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
 
     var brush = Utils.getRandomBrush();
     var result = {
-      mood: Utils.getMood(Math.random()),
+      mood: Utils.getMood(0.9),
       time: rando(100, 800)
     };
 
