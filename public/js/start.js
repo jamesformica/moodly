@@ -28,15 +28,15 @@ StartCanvas.prototype.testAll = function () {
       this.context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
 
-    var mood = getMood(Math.random());
-    var brush = getRandomBrush();
+    var mood = Utils.getMood(Math.random());
+    var brush = Utils.getRandomBrush();
     var time = rando(100, 800);
     new brush(this._canvas, this.context, mood, time);
   }.bind(this), 3000);
 };
 
 StartCanvas.prototype.testOne = function (brush) {
-  var mood = getMood(Math.random());
+  var mood = Utils.getMood(Math.random());
   var time = rando(100, 800);
 
   var result = {
