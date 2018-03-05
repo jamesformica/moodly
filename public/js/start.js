@@ -3,9 +3,6 @@ function StartCanvas(id) {
   window.startMoodOnlyGreys = true;
 
   this.testOne(CurveBubble);
-  this.testOne(CurveLine);
-  this.testOne(Bars);
-  this.testOne(Blanket);
   //this.testAll();
 }
 
@@ -28,20 +25,20 @@ StartCanvas.prototype.testAll = function () {
       this.context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
 
-    var mood = Utils.getMood(Math.random());
     var brush = Utils.getRandomBrush();
-    var time = rando(100, 800);
-    new brush(this._canvas, this.context, mood, time);
+    var result = {
+      mood: Utils.getMood(Math.random()),
+      time: rando(100, 800)
+    };
+
+    this.conductor.orchastrate(brush, result);
   }.bind(this), 3000);
 };
 
 StartCanvas.prototype.testOne = function (brush) {
-  var mood = Utils.getMood(Math.random());
-  var time = rando(100, 800);
-
   var result = {
-    mood: mood,
-    time: time
+    mood: Utils.getMood(Math.random()),
+    time: rando(100, 800)
   };
 
   this.conductor.orchastrate(brush, result);
