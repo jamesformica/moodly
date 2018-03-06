@@ -17,11 +17,12 @@ CurveLine.prototype.paintLine = function (x, y, index) {
   if (index === 0) {
     this.context.beginPath();
     this.context.globalAlpha = this.alpha;
-    this.context.moveTo(x, y);
-  } else {
     this.context.strokeStyle = this.colour;
     this.context.lineJoin = 'round';
     this.context.lineWidth = this.lineWidth;
+    this.context.moveTo(x, y);
+  } else {
+
     this.context.lineTo(x, y);
     this.context.stroke();
   }
