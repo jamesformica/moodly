@@ -2,8 +2,8 @@ function StartCanvas(id) {
   this.initCanvas(id);
   //window.startMoodOnlyGreys = true;
 
-  this.testOne(CurveBubble);
-  //this.testAll();
+  //this.testOne(CurveLine);
+  this.testAll();
 }
 
 

@@ -20,9 +20,9 @@ CurveLine.prototype.paintLine = function (x, y, index) {
     this.context.strokeStyle = this.colour;
     this.context.lineJoin = 'round';
     this.context.lineWidth = this.lineWidth;
+    this.context.globalCompositeOperation = 'overlay';
     this.context.moveTo(x, y);
   } else {
-
     this.context.lineTo(x, y);
     this.context.stroke();
   }
