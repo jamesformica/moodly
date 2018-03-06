@@ -3,35 +3,20 @@ function CurveLine(_canvas, result) {
   this.context = _canvas.getContext("2d");
   this.mood = result.mood;
   this.time = result.time;
+
+  this.colour = getMoodColour(this.mood);
+  this.alpha = CurveHelper.getLineAlpha(this.mood);
+  this.lineWidth = CurveHelper.getLineWidth(this.mood);
 }
 
 CurveLine.prototype.paint = function () {
-  return new Promise(function (resolve) {
-    this.colour = getMoodColour(this.mood);
-    this.lineWidth = CurveHelper.getLineWidth(this.mood);
-    var keyPoints = CurveHelper.getKeyPoints(this.mood, this._canvas);
-    var curvePoints = CurveHelper.getCurvePoints(keyPoints, this.mood, 20);
-
-    var index = 0;
-    var interval = setInterval(function () {
-      if (index >= curvePoints.length - 1) {
-        clearInterval(interval);
-        resolve();
-        return;
-      }
-
-      var x = curvePoints[index];
-      var y = curvePoints[index + 1];
-      this.paintLine(index, x, y);
-
-      index += 2;
-    }.bind(this), 50);
-  }.bind(this));
+  return CurveHelper.paint.call(this, 20, 50, this.paintLine);
 };
 
-CurveLine.prototype.paintLine = function (index, x, y) {
+CurveLine.prototype.paintLine = function (x, y, index) {
   if (index === 0) {
     this.context.beginPath();
+    this.context.globalAlpha = this.alpha;
     this.context.moveTo(x, y);
   } else {
     this.context.strokeStyle = this.colour;
