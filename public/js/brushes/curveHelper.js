@@ -2,11 +2,22 @@ var CurveHelper = {
   getLineWidth: function (mood) {
     switch (mood) {
       case HAPPY:
-        return rando(10, 15);
+        return rando(30, 70);
       case NEUTRAL:
         return rando(5, 10);
       case SAD:
         return rando(2, 5);
+    }
+  },
+
+  getLineAlpha: function (mood) {
+    switch (mood) {
+      case HAPPY:
+        return rando(1, 3) / 10;
+      case NEUTRAL:
+        return rando(4, 6) / 10;
+      case SAD:
+        return rando(7, 10) / 10;
     }
   },
 
@@ -40,7 +51,7 @@ var CurveHelper = {
     return points;
   },
 
-  getCurvePoints: function(keyPoints, mood, spacing) {
+  getCurvePoints: function (keyPoints, mood, spacing) {
     var strength;
     switch (mood) {
       case HAPPY:
@@ -55,5 +66,26 @@ var CurveHelper = {
     }
 
     return getCurvePoints(keyPoints, strength, spacing);
+  },
+
+  paint: function (spacing, intervalTime, paintFunc) {
+    return new Promise(function (resolve) {
+      var keyPoints = CurveHelper.getKeyPoints(this.mood, this._canvas);
+      var curvePoints = CurveHelper.getCurvePoints(keyPoints, this.mood, spacing);
+
+      var index = 0;
+      var interval = setInterval(function () {
+        if (index > curvePoints.length) {
+          clearInterval(interval);
+          resolve();
+        } else {
+          var x = curvePoints[index];
+          var y = curvePoints[index + 1];
+          paintFunc.call(this, x, y, index, curvePoints);
+
+          index += 2;
+        }
+      }.bind(this), intervalTime);
+    }.bind(this));
   }
 }

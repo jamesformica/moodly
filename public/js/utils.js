@@ -25,6 +25,7 @@ var Utils = {
       Blanket,
       CurveBubble,
       CurveLine,
+      CurveNet,
     ];
 
     return brushes[rando(0, brushes.length - 1)];

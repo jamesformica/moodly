@@ -2,8 +2,8 @@ function StartCanvas(id) {
   this.initCanvas(id);
   //window.startMoodOnlyGreys = true;
 
-  //this.testOne(CurveBubble);
-  this.testAll();
+  this.testOne(CurveBubble);
+  //this.testAll();
 }
 
 
@@ -27,7 +27,7 @@ StartCanvas.prototype.testAll = function () {
 
     var brush = Utils.getRandomBrush();
     var result = {
-      mood: Utils.getMood(0.9),
+      mood: Utils.getMood(0.8),
       time: rando(100, 800)
     };
 
@@ -37,7 +37,7 @@ StartCanvas.prototype.testAll = function () {
 
 StartCanvas.prototype.testOne = function (brush) {
   var result = {
-    mood: Utils.getMood(Math.random()),
+    mood: Utils.getMood(0.9),
     time: rando(100, 800)
   };
 
