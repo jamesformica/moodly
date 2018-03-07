@@ -7,8 +7,22 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('../img/dust_scratches.png');
+  /* background-image: url('../img/dust_scratches.png'); */
   font-family: 'Barlow', sans-serif;
+}
+
+h1 {
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font-size: 6rem;
+  color: white;
+  text-shadow: 4px 4px rgba(0,0,0,0.4);
+}
+
+h1.small {
+  font-size: 2rem;
+  color: black;
+  text-shadow: none;
+  margin: 0;
 }
 
 .canvas {
@@ -18,11 +32,7 @@ body {
 }
 
 .art-canvas {
-  margin: 1rem;
   width: 100%;
-  background-color: white;
-  border-radius: 1px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 .capture {
@@ -33,13 +43,43 @@ body {
   align-items: center;
 }
 
-.capture > span {
-  font-size: 2rem;
-  color: black;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  background-color: white;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+.reveiver {
+  height: 100%;
+  flex-grow: 1;
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.status {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.info {
+  color: steelblue;
+}
+
+.status.success {
+  color: mediumseagreen;
+}
+
+.status.error {
+  color: crimson;
+}
+
+.phrase {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

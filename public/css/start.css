@@ -17,13 +17,6 @@
   align-items: center;
 }
 
-h1 {
-  font-family: 'Oleo Script Swash Caps', cursive;
-  font-size: 6rem;
-  color: white;
-  text-shadow: 4px 4px rgba(0,0,0,0.4);
-}
-
 .actions {
   display: flex;
   flex-direction: row;
@@ -38,7 +31,13 @@ button, .button {
   color: black;
   background-color: white;
   text-decoration: none;
-  border: 0;
+  border: 1px solid black;
   border-radius: 1000px;
   cursor: pointer;
+}
+
+button.small, .button.small {
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  font-size: 0.75rem;
 }
