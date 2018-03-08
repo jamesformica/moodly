@@ -1,5 +1,6 @@
-function Sentimenter(receiver) {
+function Sentimenter(receiver, key) {
   this.receiver = receiver;
+  this.key = key;
 }
 
 Sentimenter.prototype.analyse = function (result) {
@@ -14,7 +15,7 @@ Sentimenter.prototype.analyse = function (result) {
     },
     headers: {
       'Content-Type': 'application/json',
-      'Ocp-Apim-Subscription-Key': ''
+      'Ocp-Apim-Subscription-Key': this.key
     }
   }).then(function (response) {
     var result = response.data.documents[0];

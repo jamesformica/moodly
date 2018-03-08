@@ -1,21 +1,30 @@
-  <div class="capture">
-    <h1 class="small">Moodly</h1>
+<div class="capture">
+  <h1 class="small">Moodly</h1>
 
-    <div class="reveiver">
-    <span id="status" class="status">...</span>
-    <span id="phrase" class="phrase"></span>
-    </div>
-
-    <div class="buttons">
-      <button id="stop" class="small">Stop</button>
-      <button class="small">Print</button>
-    </div>
+  <div class="reveiver">
+  <span id="status" class="status">...</span>
+  <span id="phrase" class="phrase"></span>
   </div>
-  <div class="canvas">
-    <canvas id="canvas" class="art-canvas"></canvas>
+</div>
+<div class="canvas">
+  <canvas id="canvas" class="art-canvas"></canvas>
+  <div class="icons">
+    <i title="keys" class="icon-settings icon" id="keys"></i>
+    <i title="mic on" class="icon-mic icon" id="mic"></i>
+    <i title="mic off" class="icon-mic-off icon" id="mic_off"></i>
+    <i title="restart" class="icon-rotate-ccw icon" id="stop"></i>
+    <br/>
+    <i title="script" class="icon-message-square icon" id="script"></i>
+    <i title="image" class="icon-image icon"></i>
   </div>
+</div>
 
-  <script type="text/javascript" src="js/recogniser.js"></script>
-  <script type="text/javascript" src="js/sentimenter.js"></script>
-  <script type="text/javascript" src="js/axios.min.js"></script>
-  <script type="text/javascript" src="js/art.js"></script>
+<%= erb :_keys, layout: false %>
+<%= erb :_script, layout: false %>
+
+<script type="text/javascript" src="js/modals/keysModal.js"></script>
+<script type="text/javascript" src="js/modals/scriptModal.js"></script>
+<script type="text/javascript" src="js/recogniser.js"></script>
+<script type="text/javascript" src="js/sentimenter.js"></script>
+<script type="text/javascript" src="js/axios.min.js"></script>
+<script type="text/javascript" src="js/art.js"></script>

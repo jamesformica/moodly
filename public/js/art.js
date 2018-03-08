@@ -1,14 +1,17 @@
 function Art() {
+  this.phrases = [];
   this.initCanvas("canvas");
   this._status = document.getElementById("status");
   this._phrase = document.getElementById("phrase");
-  this._stopBtn = document.getElementById("stop");
 
-  this.phrases = [];
   this.attachEvents();
-  this.initRecogniser();
-  this.sentimenter = new Sentimenter(this);
+  this.keysModal = new KeysModal();
+  this.scriptModal = new ScriptModal();
   this.conductor = new Conductor(this._canvas);
+
+  if (this.keysModal.hasKeys()) {
+    this.initRecogniser();
+  }
 }
 
 Art.prototype.initCanvas = function (id) {
@@ -20,16 +23,33 @@ Art.prototype.initCanvas = function (id) {
 Art.prototype.initRecogniser = function () {
   var mode = SDK.RecognitionMode.Dictation;
   var format = SDK.SpeechResultFormat.Simple;
-  var key = '';
 
   this.phrases = [];
-  this.recogniser = RecogniserSetup(SDK, mode, "en-US", format, key);
+  this.recogniser = RecogniserSetup(SDK, mode, "en-US", format, this.keysModal.speechKey);
+  this.sentimenter = new Sentimenter(this, this.keysModal.textKey);
+
   RecogniserStart(SDK, this.recogniser, this);
 };
 
 Art.prototype.attachEvents = function () {
-  this._stopBtn.onclick = function () {
+  document.getElementById("keys").onclick = function () {
+    this.keysModal.show();
+  }.bind(this);
+
+  document.getElementById("mic").onclick = function () {
+    this.initRecogniser();
+  }.bind(this);
+
+  document.getElementById("mic_off").onclick = function () {
     RecognizerStop(SDK, this.recogniser);
+  }.bind(this);
+
+  document.getElementById("stop").onclick = function () {
+    location.reload();
+  }.bind(this);
+
+  document.getElementById("script").onclick = function () {
+    this.scriptModal.show(this.phrases);
   }.bind(this);
 };
 
