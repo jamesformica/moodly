@@ -51,6 +51,12 @@ Art.prototype.attachEvents = function () {
   document.getElementById("script").onclick = function () {
     this.scriptModal.show(this.phrases);
   }.bind(this);
+
+  var _image = document.getElementById("image");
+  _image.onclick = function () {
+    _image.href = this._canvas.toDataURL();
+    _image.download = "snapshot.png";
+  }.bind(this);
 };
 
 Art.prototype.updateStatus = function (status, type) {
