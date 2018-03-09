@@ -1,8 +1,8 @@
 function Art() {
   this.phrases = [];
-  this.initCanvas("canvas");
-  this._status = document.getElementById("status");
-  this._phrase = document.getElementById("phrase");
+  this.initCanvas('canvas');
+  this._status = document.getElementById('status');
+  this._phrase = document.getElementById('phrase');
 
   this.attachEvents();
   this.keysModal = new KeysModal();
@@ -25,37 +25,37 @@ Art.prototype.initRecogniser = function () {
   var format = SDK.SpeechResultFormat.Simple;
 
   this.phrases = [];
-  this.recogniser = new Recogniser(mode, "en-US", format, this.keysModal.speechKey);
+  this.recogniser = new Recogniser(mode, 'en-US', format, this.keysModal.speechKey);
   this.sentimenter = new Sentimenter(this, this.keysModal.textKey);
 
   this.recogniser.start(this);
 };
 
 Art.prototype.attachEvents = function () {
-  document.getElementById("keys").onclick = function () {
+  document.getElementById('keys').onclick = function () {
     this.keysModal.show();
   }.bind(this);
 
-  document.getElementById("mic").onclick = function () {
+  document.getElementById('mic').onclick = function () {
     this.initRecogniser();
   }.bind(this);
 
-  document.getElementById("mic_off").onclick = function () {
+  document.getElementById('mic_off').onclick = function () {
     this.recogniser.stop();
   }.bind(this);
 
-  document.getElementById("stop").onclick = function () {
+  document.getElementById('stop').onclick = function () {
     location.reload();
   }.bind(this);
 
-  document.getElementById("script").onclick = function () {
+  document.getElementById('script').onclick = function () {
     this.scriptModal.show(this.phrases);
   }.bind(this);
 
-  var _image = document.getElementById("image");
+  var _image = document.getElementById('image');
   _image.onclick = function () {
     _image.href = this._canvas.toDataURL();
-    _image.download = "snapshot.png";
+    _image.download = 'snapshot.png';
   }.bind(this);
 };
 
@@ -92,7 +92,7 @@ Art.prototype.updatePhrase = function (phrase) {
 
     var newPhrase = {
       id: Utils.guid(),
-      phrase: phrase
+      phrase: phrase,
     };
 
     this.phrases.push(newPhrase);
@@ -102,7 +102,10 @@ Art.prototype.updatePhrase = function (phrase) {
 };
 
 Art.prototype.receiveSentiment = function (result) {
-  var savedPhrase = this.phrases.find(function (p) { return p.id === result.id; });
+  var savedPhrase = this.phrases.find(function (p) {
+    return p.id === result.id;
+  });
+
   savedPhrase.mood = Utils.getMood(result.score);
   savedPhrase.time = savedPhrase.phrase.length * 10;
   savedPhrase.score = result.score;

@@ -1,6 +1,6 @@
 function Blanket(_canvas, result) {
   this._canvas = _canvas;
-  this.context = _canvas.getContext("2d");
+  this.context = _canvas.getContext('2d');
   this.mood = result.mood;
 }
 
@@ -74,6 +74,7 @@ Blanket.prototype.paintBlanket = function () {
       this.context.lineTo(arguments[i][0], arguments[i][1]);
     }
   }
+
   this.context.fill();
   this.context.restore();
 };

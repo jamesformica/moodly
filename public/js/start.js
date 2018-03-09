@@ -1,12 +1,11 @@
 function StartCanvas(id) {
   this.initCanvas(id);
   this.conductor = new Conductor(this._canvas);
-  //window.startMoodOnlyGreys = true;
 
+  //window.startMoodOnlyGreys = true;
   //this.testOne(CurveLine);
   this.testAll();
 }
-
 
 StartCanvas.prototype.initCanvas = function (id) {
   this._canvas = document.getElementById(id);
@@ -26,7 +25,7 @@ StartCanvas.prototype.testAll = function () {
     var brush = Utils.getRandomBrush();
     var result = {
       mood: Utils.getMood(0.8),
-      time: rando(100, 800)
+      time: rando(100, 800),
     };
 
     this.conductor.orchastrate(brush, result);
@@ -36,7 +35,7 @@ StartCanvas.prototype.testAll = function () {
 StartCanvas.prototype.testOne = function (brush) {
   var result = {
     mood: Utils.getMood(0.9),
-    time: rando(100, 800)
+    time: rando(100, 800),
   };
 
   this.conductor.orchastrate(brush, result);

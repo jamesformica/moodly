@@ -13,7 +13,7 @@ function rando(min, max) {
 }
 
 var Utils = {
-  getMood: function(score) {
+  getMood: function (score) {
     if (score < 0.33) {
       return SAD;
     } else if (score < 0.66) {
@@ -23,7 +23,7 @@ var Utils = {
     }
   },
 
-  getRandomBrush: function() {
+  getRandomBrush: function () {
     var brushes = [
       Bars,
       Blanket,
@@ -35,11 +35,11 @@ var Utils = {
     return brushes[rando(0, brushes.length - 1)];
   },
 
-  guid: function() {
+  guid: function () {
     return this.s4() + this.s4() + '-' + this.s4() + this.s4();
   },
 
-  s4: function() {
+  s4: function () {
     return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-  }
+  },
 };

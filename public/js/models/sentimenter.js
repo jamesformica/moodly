@@ -8,15 +8,17 @@ Sentimenter.prototype.analyse = function (result) {
     method: 'post',
     url: 'https://australiaeast.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment',
     data: {
-      documents: [{
-        'id': result.id,
-        'text': result.phrase
-      }]
+      documents: [
+        {
+          id: result.id,
+          text: result.phrase,
+        },
+      ],
     },
     headers: {
       'Content-Type': 'application/json',
-      'Ocp-Apim-Subscription-Key': this.key
-    }
+      'Ocp-Apim-Subscription-Key': this.key,
+    },
   }).then(function (response) {
     var result = response.data.documents[0];
     this.receiver.receiveSentiment(result);

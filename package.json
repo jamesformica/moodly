@@ -5,10 +5,13 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "jscs": "^3.0.7",
     "jshint": "^2.9.5"
   },
   "scripts": {
-    "lint": "jshint public/js",
+    "jscs": "jscs public/js",
+    "jshint": "jshint public/js",
+    "lint": "jshint public/js && jscs public/js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

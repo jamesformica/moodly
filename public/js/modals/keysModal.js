@@ -2,10 +2,10 @@ function KeysModal() {
   this.speechKey = localStorage.getItem('speech_key');
   this.textKey = localStorage.getItem('text_key');
 
-  this._modal = document.getElementById("keysmodal");
-  this._speechKeyTxt = document.getElementById("speechkey");
-  this._textKeyTxt = document.getElementById("textkey");
-  this._saveBtn = document.getElementById("savekeys");
+  this._modal = document.getElementById('keysmodal');
+  this._speechKeyTxt = document.getElementById('speechkey');
+  this._textKeyTxt = document.getElementById('textkey');
+  this._saveBtn = document.getElementById('savekeys');
 
   if (!this.hasKeys()) {
     this.show();
@@ -37,10 +37,9 @@ KeysModal.prototype.setKeys = function () {
 };
 
 KeysModal.prototype.show = function () {
-  this._modal.classList.add("show");
+  this._modal.classList.add('show');
 };
 
 KeysModal.prototype.hide = function () {
-  this._modal.classList.remove("show");
+  this._modal.classList.remove('show');
 };
-

@@ -14,7 +14,7 @@ var happyColours = [
   '#50bdff',
   '#e300ff',
   '#00ffec',
-  '#89ff00'
+  '#89ff00',
 ];
 
 var sadColours = [
@@ -31,7 +31,7 @@ var sadColours = [
   '#230c22',
   '#3a183f',
   '#522a64',
-  '#3c3173'
+  '#3c3173',
 ];
 
 var neutralColours = [
@@ -40,7 +40,7 @@ var neutralColours = [
   '#d46f93',
   '#afdfea',
   '#a9bfbe',
-  '#708c90'
+  '#708c90',
 ];
 
 var theGreys = [
@@ -48,16 +48,16 @@ var theGreys = [
   'darkgrey',
   'lightgrey',
   'slategrey',
-  'darkslategrey'
+  'darkslategrey',
 ];
 
 var Colours = {
-  getMoodColour: function(mood, keywords) {
+  getMoodColour: function (mood, keywords) {
     if (window.startMoodOnlyGreys) {
       return this.getRandomColour(theGreys);
     }
 
-    switch(mood) {
+    switch (mood) {
       case SAD:
         return this.getRandomColour(sadColours);
       case NEUTRAL:
@@ -67,8 +67,8 @@ var Colours = {
     }
   },
 
-  getRandomColour: function(colours) {
+  getRandomColour: function (colours) {
     var num = Math.floor(Math.random() * colours.length);
     return colours[num];
-  }
+  },
 };
