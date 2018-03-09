@@ -5,13 +5,15 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "csslint": "^1.0.5",
     "jscs": "^3.0.7",
     "jshint": "^2.9.5"
   },
   "scripts": {
     "jscs": "jscs public/js",
     "jshint": "jshint public/js",
-    "lint": "jshint public/js && jscs public/js",
+    "csslint": "csslint public/css",
+    "lint": "npm run jshint && npm run jscs && npm run csslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

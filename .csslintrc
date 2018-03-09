@@ -1,0 +1,15 @@
+{
+  "ignore": [
+    "adjoining-classes",
+    "box-sizing",
+    "universal-selector",
+    "order-alphabetical"
+  ],
+  "warnings": [
+  ],
+  "errors": [
+  ],
+  "exclude-list": [
+    "public/css/icomoon.css"
+  ]
+}
