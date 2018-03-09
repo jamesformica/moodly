@@ -20,3 +20,7 @@
 .modal.show {
   top: 50%;
 }
+
+.modal-button {
+  flex-shrink: 0;
+}
