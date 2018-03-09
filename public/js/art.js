@@ -24,9 +24,10 @@ Art.prototype.initRecogniser = function () {
   var mode = SDK.RecognitionMode.Dictation;
   var format = SDK.SpeechResultFormat.Simple;
 
-  this.phrases = [];
-  this.recogniser = new Recogniser(mode, 'en-US', format, this.keysModal.speechKey);
-  this.sentimenter = new Sentimenter(this, this.keysModal.textKey);
+  if (!this.recogniser) {
+    this.recogniser = new Recogniser(mode, 'en-US', format, this.keysModal.speechKey);
+    this.sentimenter = new Sentimenter(this, this.keysModal.textKey);
+  }
 
   this.recogniser.start(this);
 };

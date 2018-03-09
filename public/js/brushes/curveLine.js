@@ -10,7 +10,7 @@ function CurveLine(_canvas, result) {
 }
 
 CurveLine.prototype.paint = function () {
-  return CurveHelper.paint.call(this, 20, 50, this.paintLine);
+  return CurveHelper.paint.call(this, 20, 40, this.paintLine);
 };
 
 CurveLine.prototype.paintLine = function (x, y, index) {

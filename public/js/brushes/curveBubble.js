@@ -8,7 +8,7 @@ function CurveBubble(_canvas, result) {
 }
 
 CurveBubble.prototype.paint = function () {
-  return CurveHelper.paint.call(this, 10, 100, this.paintCircle);
+  return CurveHelper.paint.call(this, 10, 50, this.paintCircle);
 };
 
 CurveBubble.prototype.paintCircle = function (x, y) {

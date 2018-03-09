@@ -74,18 +74,33 @@ var CurveHelper = {
       var curvePoints = CurveHelper.getCurvePoints(keyPoints, this.mood, spacing);
 
       var index = 0;
-      var interval = setInterval(function () {
+      var start = null;
+      var _this = this;
+
+      function iterator(timestamp) {
         if (index > curvePoints.length) {
-          clearInterval(interval);
           resolve();
+          return;
+        }
+
+        if (!start) {
+          start = timestamp;
+        }
+
+        if (timestamp - start < intervalTime) {
+          window.requestAnimationFrame(iterator);
         } else {
           var x = curvePoints[index];
           var y = curvePoints[index + 1];
-          paintFunc.call(this, x, y, index, curvePoints);
+          paintFunc.call(_this, x, y, index, curvePoints);
 
           index += 2;
+          start = null;
+          window.requestAnimationFrame(iterator);
         }
-      }.bind(this), intervalTime);
+      }
+
+      window.requestAnimationFrame(iterator);
     }.bind(this));
   },
 };

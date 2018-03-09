@@ -9,7 +9,7 @@ function CurveNet(_canvas, result) {
 }
 
 CurveNet.prototype.paint = function () {
-  return CurveHelper.paint.call(this, 20, 50, this.paintNet);
+  return CurveHelper.paint.call(this, 20, 20, this.paintNet);
 };
 
 CurveNet.prototype.paintNet = function (x, y, index, curvePoints) {
