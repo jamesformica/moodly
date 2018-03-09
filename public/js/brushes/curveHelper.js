@@ -95,7 +95,7 @@ var CurveHelper = {
           paintFunc.call(_this, x, y, index, curvePoints);
 
           index += 2;
-          start = null;
+          start = timestamp;
           window.requestAnimationFrame(iterator);
         }
       }

@@ -23,27 +23,40 @@ Bars.prototype.init = function () {
 
 Bars.prototype.paint = function () {
   return new Promise(function (resolve) {
-    var interval = setInterval(function () {
+    var start = null;
+
+    function iterator(timestamp) {
       if (this.number === 0) {
-        clearInterval(interval);
         resolve();
         return;
       }
 
-      switch (this.mood) {
-        case HAPPY:
-          this.paintTop();
-          break;
-        case NEUTRAL:
-          this.paintSide();
-          break;
-        case SAD:
-          this.paintBottom();
-          break;
+      if (!start) {
+        start = timestamp;
       }
 
-      this.number -= 1;
-    }.bind(this), this.time);
+      if (timestamp - start < this.time) {
+        window.requestAnimationFrame(iterator.bind(this));
+      } else {
+        start = timestamp;
+
+        switch (this.mood) {
+          case HAPPY:
+            this.paintTop();
+            break;
+          case NEUTRAL:
+            this.paintSide();
+            break;
+          case SAD:
+            this.paintBottom();
+            break;
+        }
+        this.number -= 1;
+        window.requestAnimationFrame(iterator.bind(this));
+      }
+    }
+
+    window.requestAnimationFrame(iterator.bind(this));
   }.bind(this));
 };
 
