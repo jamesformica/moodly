@@ -13,16 +13,16 @@ CurveLine.prototype.paint = function () {
   return CurveHelper.paint.call(this, 20, 40, this.paintLine);
 };
 
-CurveLine.prototype.paintLine = function (x, y, index) {
+CurveLine.prototype.paintLine = function (x, y, index, curvePoints) {
   if (index === 0) {
-    this.context.beginPath();
+
     this.context.globalAlpha = this.alpha;
     this.context.strokeStyle = this.colour;
     this.context.lineJoin = 'round';
     this.context.lineWidth = this.lineWidth;
-    this.context.globalCompositeOperation = 'overlay';
-    this.context.moveTo(x, y);
   } else {
+    this.context.beginPath();
+    this.context.moveTo(curvePoints[index - 2], curvePoints[index - 1]);
     this.context.lineTo(x, y);
     this.context.stroke();
   }

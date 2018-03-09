@@ -4,8 +4,8 @@ function StartCanvas(id) {
 
   window.startMoodOnlyGreys = true;
 
-  //this.testAll();
-  this.testOne(CurveLine);
+  this.testAll();
+  //this.testOne(CurveLine);
 }
 
 StartCanvas.prototype.initCanvas = function (id) {
