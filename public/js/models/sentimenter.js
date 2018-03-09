@@ -21,7 +21,6 @@ Sentimenter.prototype.analyse = function (result) {
     var result = response.data.documents[0];
     this.receiver.receiveSentiment(result);
   }.bind(this)).catch(function (error) {
-    console.log(error);
     this.receiver.updateStatus('Something went wrong', ERROR);
   }.bind(this));
 };

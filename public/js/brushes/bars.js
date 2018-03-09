@@ -82,6 +82,6 @@ Bars.prototype.paintSide = function () {
 Bars.prototype.paintBar = function (x, y, width, height) {
   this.context.beginPath();
   this.context.globalAlpha = rando(2, 5) / 10;
-  this.context.fillStyle = getMoodColour(this.mood);
+  this.context.fillStyle = Colours.getMoodColour(this.mood);
   this.context.fillRect(x, y, width, height);
 };

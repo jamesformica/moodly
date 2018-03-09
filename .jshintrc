@@ -1,9 +1,30 @@
 {
+  "browser": true,
+  "strict": "implied",
   "globals": {
-    "KeysModal": true,
-    "ScriptModal": true,
+    "axios": true,
+    "Bars": true,
+    "Blanket": true,
+    "Colours": true,
     "Conductor": true,
+    "CurveBubble": true,
+    "CurveHelper": true,
+    "CurveLine": true,
+    "CurveNet": true,
+    "ERROR": true,
+    "getCurvePoints": true,
+    "HAPPY": true,
+    "INFO": true,
+    "KeysModal": true,
+    "NEUTRAL": true,
+    "Promise": true,
+    "rando": true,
+    "Recogniser": true,
+    "SAD": true,
+    "ScriptModal": true,
     "SDK": true,
-    "Recogniser": true
+    "Sentimenter": true,
+    "SUCCESS": true,
+    "Utils": true
   }
 }

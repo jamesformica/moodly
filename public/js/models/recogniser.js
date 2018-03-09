@@ -1,17 +1,17 @@
-function RecogniserSetup(SDK, recognitionMode, language, format, subscriptionKey) {
+function Recogniser(recognitionMode, language, format, subscriptionKey) {
   var authentication = new SDK.CognitiveSubscriptionKeyAuthentication(subscriptionKey);
-  var recognizerConfig = new SDK.RecognizerConfig(
+  var recogniserConfig = new SDK.RecognizerConfig(
     new SDK.SpeechConfig(
       new SDK.Context(
         new SDK.OS(navigator.userAgent, "Browser", null),
         new SDK.Device("SpeechSample", "SpeechSample", "1.0.00000"))),
     recognitionMode, language, format);
 
-  return SDK.CreateRecognizer(recognizerConfig, authentication);
+  this.recogniser = SDK.CreateRecognizer(recogniserConfig, authentication);
 }
 
-function RecogniserStart(SDK, recognizer, receiver) {
-  recognizer.Recognize(function(event) {
+Recogniser.prototype.start = function (receiver) {
+  this.recogniser.Recognize(function (event) {
     switch (event.Name) {
       case "RecognitionTriggeredEvent":
         receiver.updateStatus("Initializing", INFO);
@@ -39,12 +39,11 @@ function RecogniserStart(SDK, recognizer, receiver) {
         receiver.updatePhrase(event.Result.DisplayText);
         break;
     }
-  }).On(function() {}, function(error) {
+  }).On(function () { }, function (error) {
     receiver.updateStatus("Shits Broke Yo.. Sorry!", ERROR);
-    console.error(error);
   });
-}
+};
 
-function RecognizerStop(SDK, recognizer) {
-  recognizer.AudioSource.TurnOff();
-}
+Recogniser.prototype.stop = function () {
+  this.recogniser.AudioSource.TurnOff();
+};

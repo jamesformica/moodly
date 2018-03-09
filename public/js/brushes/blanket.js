@@ -65,7 +65,7 @@ Blanket.prototype.paintBlanket = function () {
   this.context.beginPath();
 
   this.context.globalAlpha = rando(2, 4) / 10;
-  this.context.fillStyle = getMoodColour(this.mood);
+  this.context.fillStyle = Colours.getMoodColour(this.mood);
 
   for (var i = 0; i < arguments.length; i++) {
     if (i === 0) {

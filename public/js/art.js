@@ -1,6 +1,4 @@
 function Art() {
-  "use strict";
-
   this.phrases = [];
   this.initCanvas("canvas");
   this._status = document.getElementById("status");
@@ -27,10 +25,10 @@ Art.prototype.initRecogniser = function () {
   var format = SDK.SpeechResultFormat.Simple;
 
   this.phrases = [];
-  this.recogniser = RecogniserSetup(SDK, mode, "en-US", format, this.keysModal.speechKey);
+  this.recogniser = new Recogniser(mode, "en-US", format, this.keysModal.speechKey);
   this.sentimenter = new Sentimenter(this, this.keysModal.textKey);
 
-  RecogniserStart(SDK, this.recogniser, this);
+  this.recogniser.start(this);
 };
 
 Art.prototype.attachEvents = function () {
@@ -43,7 +41,7 @@ Art.prototype.attachEvents = function () {
   }.bind(this);
 
   document.getElementById("mic_off").onclick = function () {
-    RecognizerStop(SDK, this.recogniser);
+    this.recogniser.stop();
   }.bind(this);
 
   document.getElementById("stop").onclick = function () {

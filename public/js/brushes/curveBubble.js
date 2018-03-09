@@ -4,7 +4,7 @@ function CurveBubble(_canvas, result) {
   this.mood = result.mood;
   this.time = result.time;
 
-  this.colour = getMoodColour(this.mood);
+  this.colour = Colours.getMoodColour(this.mood);
 }
 
 CurveBubble.prototype.paint = function () {
