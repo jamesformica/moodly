@@ -49,7 +49,7 @@ var theGreys = [
   'lightgrey',
   'slategrey',
   'darkslategrey'
-]
+];
 
 function getMoodColour(mood, keywords) {
   if (window.startMoodOnlyGreys) {

@@ -11,7 +11,7 @@ function RecogniserSetup(SDK, recognitionMode, language, format, subscriptionKey
 }
 
 function RecogniserStart(SDK, recognizer, receiver) {
-  recognizer.Recognize((event) => {
+  recognizer.Recognize(function(event) {
     switch (event.Name) {
       case "RecognitionTriggeredEvent":
         receiver.updateStatus("Initializing", INFO);
@@ -39,7 +39,7 @@ function RecogniserStart(SDK, recognizer, receiver) {
         receiver.updatePhrase(event.Result.DisplayText);
         break;
     }
-  }).On(() => { }, (error) => {
+  }).On(function() {}, function(error) {
     receiver.updateStatus("Shits Broke Yo.. Sorry!", ERROR);
     console.error(error);
   });

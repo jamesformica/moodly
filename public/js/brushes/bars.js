@@ -45,7 +45,7 @@ Bars.prototype.paint = function () {
       this.number -= 1;
     }.bind(this), this.time);
   }.bind(this));
-}
+};
 
 Bars.prototype.paintBottom = function () {
   var thickness = rando(15, 23);
@@ -54,7 +54,7 @@ Bars.prototype.paintBottom = function () {
   var y = this._canvas.height - height;
 
   this.paintBar(x, y, thickness, height);
-}
+};
 
 Bars.prototype.paintTop = function () {
   var thickness = rando(5, 15);
@@ -63,24 +63,25 @@ Bars.prototype.paintTop = function () {
   var y = 0;
 
   this.paintBar(x, y, thickness, height);
-}
+};
 
 Bars.prototype.paintSide = function () {
   var thickness = rando(10, 25);
   var length = rando(this._canvas.width * 0.1, this._canvas.width * 0.3);
+  var x;
   var y = rando(0, this._canvas.height);
   if (rando(0, 1)) {
-    var x = 0;
+    x = 0;
   } else {
-    var x = this._canvas.width - length;
+    x = this._canvas.width - length;
   }
 
   this.paintBar(x, y, length, thickness);
-}
+};
 
 Bars.prototype.paintBar = function (x, y, width, height) {
   this.context.beginPath();
   this.context.globalAlpha = rando(2, 5) / 10;
   this.context.fillStyle = getMoodColour(this.mood);
   this.context.fillRect(x, y, width, height);
-}
+};

@@ -26,4 +26,4 @@ CurveLine.prototype.paintLine = function (x, y, index) {
     this.context.lineTo(x, y);
     this.context.stroke();
   }
-}
+};

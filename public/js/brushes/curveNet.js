@@ -21,4 +21,4 @@ CurveNet.prototype.paintNet = function (x, y, index, curvePoints) {
   this.context.moveTo(curvePoints[beginIndex], curvePoints[beginIndex + 1]);
   this.context.lineTo(curvePoints[index], curvePoints[index + 1]);
   this.context.stroke();
-}
+};

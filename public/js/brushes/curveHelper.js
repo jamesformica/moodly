@@ -88,4 +88,4 @@ var CurveHelper = {
       }.bind(this), intervalTime);
     }.bind(this));
   }
-}
+};

@@ -1,0 +1,25 @@
+{
+  "name": "moodly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  },
+  "scripts": {
+    "lint": "jshint public/js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesformica/moodly.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesformica/moodly/issues"
+  },
+  "homepage": "https://github.com/jamesformica/moodly#readme"
+}

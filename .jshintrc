@@ -1,0 +1,9 @@
+{
+  "globals": {
+    "KeysModal": true,
+    "ScriptModal": true,
+    "Conductor": true,
+    "SDK": true,
+    "Recogniser": true
+  }
+}

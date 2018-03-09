@@ -1,4 +1,6 @@
 function Art() {
+  "use strict";
+
   this.phrases = [];
   this.initCanvas("canvas");
   this._status = document.getElementById("status");
@@ -102,13 +104,13 @@ Art.prototype.updatePhrase = function (phrase) {
 };
 
 Art.prototype.receiveSentiment = function (result) {
-  var savedPhrase = this.phrases.find(function (p) { return p.id === result.id });
+  var savedPhrase = this.phrases.find(function (p) { return p.id === result.id; });
   savedPhrase.mood = Utils.getMood(result.score);
   savedPhrase.time = savedPhrase.phrase.length * 10;
   savedPhrase.score = result.score;
 
   this.conductor.orchastrate(Utils.getRandomBrush(), savedPhrase);
-}
+};
 
 Art.prototype.onStop = function () {
   this._phrase.innerText = '';

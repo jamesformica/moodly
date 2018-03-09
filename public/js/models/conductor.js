@@ -3,7 +3,7 @@ function Conductor(_canvas) {
   this.context = _canvas.getContext("2d");
   this.arrangement = [];
   this.conducting = false;
-};
+}
 
 Conductor.prototype.orchastrate = function (brush, result) {
   this.arrangement.push({ brush: brush, result: result });
@@ -31,4 +31,4 @@ Conductor.prototype.resolve = function () {
   } else {
     this.conducting = false;
   }
-}
+};

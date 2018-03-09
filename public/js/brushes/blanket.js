@@ -59,7 +59,7 @@ Blanket.prototype.paintMiddle = function () {
   }
 
   this.paintBlanket(p1, p2, p3);
-}
+};
 
 Blanket.prototype.paintBlanket = function () {
   this.context.beginPath();
@@ -76,4 +76,4 @@ Blanket.prototype.paintBlanket = function () {
   }
   this.context.fill();
   this.context.restore();
-}
+};

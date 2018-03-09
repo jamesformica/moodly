@@ -7,7 +7,7 @@ function ScriptModal() {
 
 ScriptModal.prototype.hide = function() {
   this._modal.classList.remove("show");
-}
+};
 
 ScriptModal.prototype.show = function(phrases) {
   while (this._content.lastChild) {
@@ -23,5 +23,4 @@ ScriptModal.prototype.show = function(phrases) {
   }
 
   this._modal.classList.add("show");
-}
-
+};
