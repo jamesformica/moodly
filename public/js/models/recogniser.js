@@ -39,9 +39,12 @@ Recogniser.prototype.start = function (receiver) {
         receiver.updatePhrase(event.Result.DisplayText);
         break;
     }
-  }).On(null, function (error) {
-    receiver.updateStatus('Shits Broke Yo.. Sorry!', ERROR);
-  });
+  }).On(
+    function () { },
+
+    function (error) {
+      receiver.updateStatus('Shits Broke Yo.. Sorry!', ERROR);
+    });
 };
 
 Recogniser.prototype.stop = function () {

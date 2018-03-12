@@ -25,6 +25,7 @@ Art.prototype.initRecogniser = function () {
   var format = SDK.SpeechResultFormat.Simple;
 
   if (!this.recogniser) {
+    SDK.Events.instance.AttachListener(new ConsoleListener(this));
     this.recogniser = new Recogniser(mode, 'en-US', format, this.keysModal.speechKey);
     this.sentimenter = new Sentimenter(this, this.keysModal.textKey);
   }
