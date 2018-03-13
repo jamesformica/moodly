@@ -2,10 +2,10 @@ function StartCanvas(id) {
   this.initCanvas(id);
   this.conductor = new Conductor(this._canvas);
 
-  window.startMoodOnlyGreys = true;
+  //window.startMoodOnlyGreys = true;
 
   //this.testAll();
-  this.testOne(Bars);
+  this.testOne(CurveSpray);
 }
 
 StartCanvas.prototype.initCanvas = function (id) {
