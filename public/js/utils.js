@@ -30,6 +30,8 @@ var Utils = {
       CurveBubble,
       CurveLine,
       CurveNet,
+      CurveSpray,
+      CurveStar,
     ];
 
     return brushes[rando(0, brushes.length - 1)];

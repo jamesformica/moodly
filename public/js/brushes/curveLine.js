@@ -2,15 +2,28 @@ function CurveLine(_canvas, result) {
   this._canvas = _canvas;
   this.context = _canvas.getContext('2d');
   this.mood = result.mood;
-  this.time = result.time;
+
+  switch (this.mood) {
+    case HAPPY:
+      this.time = rando(40, 50);
+      this.alpha = rando(1, 3) / 10;
+      break;
+    case NEUTRAL:
+      this.time = rando(20, 40);
+      this.alpha = rando(4, 6) / 10;
+      break;
+    case SAD:
+      this.time = rando(3, 5);
+      this.alpha = rando(4, 10) / 10;
+      break;
+  }
 
   this.colour = Colours.getMoodColour(this.mood);
-  this.alpha = CurveHelper.getLineAlpha(this.mood);
   this.lineWidth = CurveHelper.getLineWidth(this.mood);
 }
 
 CurveLine.prototype.paint = function () {
-  return CurveHelper.paint.call(this, 20, 40, this.paintLine);
+  return CurveHelper.paint.call(this, 20, this.time, this.paintLine);
 };
 
 CurveLine.prototype.paintLine = function (x, y, index, curvePoints) {

@@ -10,17 +10,6 @@ var CurveHelper = {
     }
   },
 
-  getLineAlpha: function (mood) {
-    switch (mood) {
-      case HAPPY:
-        return rando(1, 3) / 10;
-      case NEUTRAL:
-        return rando(4, 6) / 10;
-      case SAD:
-        return rando(7, 10) / 10;
-    }
-  },
-
   getKeyPoints: function (mood, _canvas) {
     var points = [];
     var numPoints;

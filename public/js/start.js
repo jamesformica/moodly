@@ -2,10 +2,10 @@ function StartCanvas(id) {
   this.initCanvas(id);
   this.conductor = new Conductor(this._canvas);
 
-  //window.startMoodOnlyGreys = true;
+  window.startMoodOnlyGreys = true;
 
   //this.testAll();
-  this.testOne(CurveStar);
+  this.testOne(CurveLine);
 }
 
 StartCanvas.prototype.initCanvas = function (id) {
@@ -35,7 +35,7 @@ StartCanvas.prototype.testAll = function () {
 
 StartCanvas.prototype.testOne = function (brush) {
   var result = {
-    mood: Utils.getMood(0.9),
+    mood: Utils.getMood(0.1),
     time: rando(100, 800),
   };
 

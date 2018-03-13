@@ -12,7 +12,7 @@ function CurveSpray(_canvas, result) {
 }
 
 CurveSpray.prototype.paint = function () {
-  return CurveHelper.paint.call(this, 20, 50, this.paintSpray);
+  return CurveHelper.paint.call(this, 20, 80, this.paintSpray);
 };
 
 CurveSpray.prototype.paintSpray = function (x, y) {
@@ -24,7 +24,7 @@ CurveSpray.prototype.paintSpray = function (x, y) {
     }
 
     this.context.beginPath();
-    this.context.globalAlpha = rando(7, 10) / 10;
+    this.context.globalAlpha = rando(5, 10) / 10;
     this.context.fillStyle = this.colour;
     this.context.fillRect(randomPoints[i], randomPoints[i + 1], 2, 2);
   }
