@@ -7,7 +7,7 @@ function CurveSpray(_canvas, result) {
   this.colour = Colours.getMoodColour(this.mood);
 
   if (this.mood === HAPPY) {
-    this.rainbowMode = rando(0, 4) === 0;
+    this.rainbowMode = rando(0, 2) === 0;
   }
 }
 

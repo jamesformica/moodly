@@ -29,10 +29,11 @@ var Utils = {
       Blanket,
       Circles,
       CurveBubble,
-      CurveLine,
+      //CurveLine,
       CurveNet,
       CurveSpray,
       CurveStar,
+      Target,
     ];
 
     return brushes[rando(0, brushes.length - 1)];

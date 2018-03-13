@@ -5,7 +5,7 @@ function StartCanvas(id) {
   //window.startMoodOnlyGreys = true;
 
   //this.testAll();
-  this.testOne(Circles);
+  this.testOne(CurveSpray);
 }
 
 StartCanvas.prototype.initCanvas = function (id) {
