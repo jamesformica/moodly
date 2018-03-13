@@ -76,5 +76,4 @@ Blanket.prototype.paintBlanket = function () {
   }
 
   this.context.fill();
-  this.context.restore();
 };

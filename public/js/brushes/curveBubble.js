@@ -2,7 +2,6 @@ function CurveBubble(_canvas, result) {
   this._canvas = _canvas;
   this.context = _canvas.getContext('2d');
   this.mood = result.mood;
-  this.time = result.time;
 
   this.colour = Colours.getMoodColour(this.mood);
 }
