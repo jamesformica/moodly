@@ -2,12 +2,7 @@ function Bars(_canvas, result) {
   this._canvas = _canvas;
   this.context = _canvas.getContext('2d');
   this.mood = result.mood;
-  this.time = result.time;
 
-  this.init();
-}
-
-Bars.prototype.init = function () {
   switch (this.mood) {
     case HAPPY:
       this.number = rando(10, 15);
@@ -19,45 +14,24 @@ Bars.prototype.init = function () {
       this.number = rando(3, 6);
       break;
   }
-};
+}
 
 Bars.prototype.paint = function () {
-  return new Promise(function (resolve) {
-    var start = null;
+  return BrushHelper.paintIterator.call(this, this.number, 100, this.paintABar);
+};
 
-    function iterator(timestamp) {
-      if (this.number === 0) {
-        resolve();
-        return;
-      }
-
-      if (!start) {
-        start = timestamp;
-      }
-
-      if (timestamp - start < this.time) {
-        window.requestAnimationFrame(iterator.bind(this));
-      } else {
-        start = timestamp;
-
-        switch (this.mood) {
-          case HAPPY:
-            this.paintTop();
-            break;
-          case NEUTRAL:
-            this.paintSide();
-            break;
-          case SAD:
-            this.paintBottom();
-            break;
-        }
-        this.number -= 1;
-        window.requestAnimationFrame(iterator.bind(this));
-      }
-    }
-
-    window.requestAnimationFrame(iterator.bind(this));
-  }.bind(this));
+Bars.prototype.paintABar = function () {
+  switch (this.mood) {
+    case HAPPY:
+      this.paintTop();
+      break;
+    case NEUTRAL:
+      this.paintSide();
+      break;
+    case SAD:
+      this.paintBottom();
+      break;
+  }
 };
 
 Bars.prototype.paintBottom = function () {

@@ -27,6 +27,7 @@ var Utils = {
     var brushes = [
       Bars,
       Blanket,
+      Circles,
       CurveBubble,
       CurveLine,
       CurveNet,
