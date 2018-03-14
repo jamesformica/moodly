@@ -17,6 +17,11 @@ h1 {
   text-shadow: 4px 4px rgba(0, 0, 0, 0.4);
 }
 
+a {
+  color: black;
+  background-color: #eecbff;
+}
+
 .small {
   font-size: 2rem;
   color: black;

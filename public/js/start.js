@@ -1,11 +1,12 @@
 function StartCanvas(id) {
   this.initCanvas(id);
+  this.attachEvents();
   this.conductor = new Conductor(this._canvas);
 
-  //window.startMoodOnlyGreys = true;
+  window.startMoodOnlyGreys = true;
 
-  //this.testAll();
-  this.testOne(CurveSpray);
+  this.testAll();
+  //this.testOne(CurveSpray);
 }
 
 StartCanvas.prototype.initCanvas = function (id) {
@@ -40,6 +41,18 @@ StartCanvas.prototype.testOne = function (brush) {
   };
 
   this.conductor.orchastrate(brush, result);
+};
+
+StartCanvas.prototype.attachEvents = function () {
+  var wtfModal = document.getElementById('wtfmodal');
+
+  document.getElementById('wtf').onclick = function () {
+    wtfModal.classList.add('show');
+  };
+
+  document.getElementById('closewtf').onclick = function () {
+    wtfModal.classList.remove('show');
+  };
 };
 
 new StartCanvas('start-canvas');

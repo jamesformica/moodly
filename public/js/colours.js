@@ -14,7 +14,6 @@ var happyColours = [
   '#50bdff',
   '#e300ff',
   '#00ffec',
-  '#89ff00',
 ];
 
 var sadColours = [

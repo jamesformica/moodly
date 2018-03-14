@@ -28,11 +28,11 @@ var Utils = {
       Bars,
       Blanket,
       Circles,
-      CurveBubble,
+      //CurveBubble,
       //CurveLine,
       CurveNet,
       CurveSpray,
-      CurveStar,
+      //CurveStar,
       Target,
     ];
 
