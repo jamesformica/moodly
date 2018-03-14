@@ -56,4 +56,6 @@ StartCanvas.prototype.attachEvents = function () {
   };
 };
 
-new StartCanvas('start-canvas');
+window.onload = function () {
+  new StartCanvas('start-canvas');
+};

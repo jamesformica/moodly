@@ -119,4 +119,6 @@ Art.prototype.onStop = function () {
   this._phrase.innerText = '';
 };
 
-new Art();
+window.onload = function () {
+  new Art();
+};
