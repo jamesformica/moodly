@@ -101,6 +101,7 @@ a {
   cursor: pointer;
   transition: 0.4s;
   color: black;
+  background-color: transparent;
   text-decoration: none;
   box-sizing: border-box;
 }

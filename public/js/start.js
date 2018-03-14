@@ -24,9 +24,10 @@ StartCanvas.prototype.testAll = function () {
       this.context.clearRect(0, 0, this._canvas.width, this._canvas.height);
     }
 
-    var brush = Utils.getRandomBrush();
+    var mood = Utils.getMood(0.5);
+    var brush = Utils.getRandomBrush(mood);
     var result = {
-      mood: Utils.getMood(0.8),
+      mood: mood,
       time: rando(100, 800),
     };
 
@@ -36,7 +37,7 @@ StartCanvas.prototype.testAll = function () {
 
 StartCanvas.prototype.testOne = function (brush) {
   var result = {
-    mood: Utils.getMood(0.9),
+    mood: Utils.getMood(0.1),
     time: rando(100, 800),
   };
 

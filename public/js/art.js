@@ -112,7 +112,7 @@ Art.prototype.receiveSentiment = function (result) {
   savedPhrase.time = savedPhrase.phrase.length * 10;
   savedPhrase.score = result.score;
 
-  this.conductor.orchastrate(Utils.getRandomBrush(), savedPhrase);
+  this.conductor.orchastrate(Utils.getRandomBrush(savedPhrase.mood), savedPhrase);
 };
 
 Art.prototype.onStop = function () {

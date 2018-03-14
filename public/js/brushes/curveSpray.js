@@ -6,13 +6,22 @@ function CurveSpray(_canvas, result) {
   this.height = 50;
   this.colour = Colours.getMoodColour(this.mood);
 
-  if (this.mood === HAPPY) {
-    this.rainbowMode = rando(0, 2) === 0;
+  switch (this.mood) {
+    case HAPPY:
+      this.time = rando(40, 50);
+      this.rainbowMode = rando(0, 2) === 0;
+      break;
+    case NEUTRAL:
+      this.time = rando(20, 40);
+      break;
+    case SAD:
+      this.time = rando(3, 5);
+      break;
   }
 }
 
 CurveSpray.prototype.paint = function () {
-  return CurveHelper.paint.call(this, 20, 80, this.paintSpray);
+  return CurveHelper.paint.call(this, 20, this.time, this.paintSpray);
 };
 
 CurveSpray.prototype.paintSpray = function (x, y) {
