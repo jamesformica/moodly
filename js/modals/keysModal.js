@@ -8,7 +8,12 @@ function KeysModal() {
   this._saveBtn = document.getElementById('savekeys');
 
   if (!this.hasKeys()) {
-    this.show();
+    // check if first time starting up with default keys
+    if (!this.speechKey && this._speechKeyTxt.value && !this.textKey && this._textKeyTxt.value) {
+      this.save();
+    } else {
+      this.show();
+    }
   } else {
     this._speechKeyTxt.value = this.speechKey;
     this._textKeyTxt.value = this.textKey;

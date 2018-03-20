@@ -29,7 +29,7 @@ Recogniser.prototype.start = function (receiver) {
         receiver.updatePartial(event.Result.Text);
         break;
       case 'SpeechEndDetectedEvent':
-        receiver.updateStatus('That\'s enough listening for now', INFO);
+        receiver.updateStatus('No longer listening', INFO);
         receiver.onStop();
         break;
       case 'SpeechSimplePhraseEvent':
